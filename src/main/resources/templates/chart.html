@@ -2,13 +2,23 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Commodities Chart</title>
+    <title th:text="#{historical.data.title}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <body>
-<canvas id="btcChart" style="width:100%;max-width:600px" title="BTC"></canvas>
-<canvas id="goldChart" style="width:100%;max-width:600px" title="Gold (per ounce)"></canvas>
-<canvas id="oilChart" style="width:100%;max-width:600px" title="Oil Brent Crude"></canvas>
+
+<h1 th:text="#{historical.data.title}"/>
+
+<h3 th:text="#{label.detailed.btc}"/>
+<canvas id="btcChart" class="chart" th:title="#{label.detailed.btc}"></canvas>
+
+<h3 th:text="#{label.detailed.gold}"/>
+<canvas id="goldChart" class="chart" th:title="#{label.detailed.gold}"></canvas>
+
+<h3 th:text="#{label.detailed.oil}"/>
+<canvas id="oilChart" class="chart" th:title="#{label.detailed.oil}"></canvas>
+
 <script th:inline="javascript">
     var xValues = [[${daysList}]];
 
