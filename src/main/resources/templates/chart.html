@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title th:text="#{historical.data.title}"/>
     <link rel="stylesheet" th:href="@{/css/style.css}"/>
+    <link rel="shortcut icon" href="#"/>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/regression@2.0.1/dist/regression.min.js"></script>
+<script th:src="@{/js/script.js}"></script>
 <body>
 
 <h1 th:text="#{historical.data.title}"/>
@@ -30,6 +33,10 @@
                 data: [[${btcList}]],
                 borderColor: "red",
                 fill: false
+            }, {
+                data: getRegression([[${btcList}]]),
+                borderColor: "black",
+                fill: false
             }]
         },
         options: {
@@ -45,6 +52,10 @@
                 data: [[${goldList}]],
                 borderColor: "green",
                 fill: false
+            }, {
+                data: getRegression([[${goldList}]]),
+                borderColor: "black",
+                fill: false
             }]
         },
         options: {
@@ -59,6 +70,10 @@
             datasets: [{
                 data: [[${oilList}]],
                 borderColor: "blue",
+                fill: false
+            }, {
+                data: getRegression([[${oilList}]]),
+                borderColor: "black",
                 fill: false
             }]
         },
